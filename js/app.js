@@ -16,7 +16,7 @@ $(document).ready(function(){
   // Below makes it a global game const
   const game = {
     count: 0,
-    possibilities: ['#green', '#blue', '#red', '#orange', '#purple'],
+    possibilities: ['#8A2BE2', '#00FF00', '#40E0D0', '#orange', '#FF33CC', '#yellow'],
     currentGame: [],
     player: []
 };
@@ -61,20 +61,23 @@ $(document).ready(function(){
     game.shade = function shade(colName) {
       console.log(colName);
       switch(colName) {
-        case'#blue':
-        $(colName).css('background-color', 'blue');
+        case'#lime':
+        $(colName).css('background-color', '#00FF00');
         break;
-        case'#green':
-        $(colName).css('background-color', 'green');
+        case'#violet':
+        $(colName).css('background-color', '#8A2BE2');
         break;
-        case'#red':
-        $(colName).css('background-color', 'red');
+        case'#Turquoise':
+        $(colName).css('background-color', '#40E0D0');
         break;
-        case'#purple':
-        $(colName).css('background-color', 'purple');
+        case'#pink':
+        $(colName).css('background-color', '#FF33CC');
         break;
         case'#orange':
         $(colName).css('background-color', 'orange');
+        break;
+        case'#yellow':
+        $(colName).css('background-color', 'yellow');
       }
     }
 
