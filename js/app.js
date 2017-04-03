@@ -32,17 +32,17 @@ $(document).ready(function(){
       game.addCount();
     };
 
-    // If else statement * if you get the sequence wrong it will remove the class on the click and add the danger button to show player they got it wrong
-    game.strict = fuction strict() {
-      if (game.strict === false) {
-        game.strict === true;
-        $('#strict').html('Is currently on').removeClass('btn-danger').addClass('btn-primary');
-      } else {
-        game.strict === false;
-        $('#strict').html('Is currently off').removeClass('btn-danger').addClass('btn-primary');
-      }
-      game.newGame();
-    };
+    // // If else statement * if you get the sequence wrong it will remove the class on the click and add the danger button to show player they got it wrong
+    // game.strict = fuction strict() {
+    //   if (game.strict === false) {
+    //     game.strict === true;
+    //     $('#strict').html('Is currently on').removeClass('btn-danger').addClass('btn-primary');
+    //   } else {
+    //     game.strict === false;
+    //     $('#strict').html('Is currently off').removeClass('btn-danger').addClass('btn-primary');
+    //   }
+    //   game.newGame();
+    // };
     // Setting the intervals of the moves
     game.showMoves = function showMoves() {
       var i = 0;

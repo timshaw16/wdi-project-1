@@ -7,8 +7,9 @@ body {
 .gameBoard {
     max-width: 500px;
     height: 500px;
-    margin: 77px auto;
+    margin: 19px auto;
     margin-top: 180;
+    margin-bottom: -65px;
 }
 
 .top-row {
@@ -40,7 +41,9 @@ body {
 
 h2#scoreNum {
   color:#4B0082;
-  font-size: 35px
+  font-size: 35px;
+  margin-bottom: -13px;
+  margin-top: -9px;
 }
 
 #blue {
@@ -51,20 +54,30 @@ h2#scoreNum {
 #green {
     border: 2px solid green;
     margin-left: 100px;
+    margin-top: -20px;
 }
 
 #red {
   border: 2px solid red;
+  margin-top: -20px;
 }
 
 #purple {
   border: 2px solid purple;
-    margin-left: 106px;
+  margin-left: 106px;
+  margin-top: -20px;
 }
 
 #orange {
   border: 2px solid orange;
   margin-right: 10px;
+  margin-top: -20px;
+}
+
+#yellow {
+  border: 2px solid yellow;
+  margin-left: 196px;
+  margin-top: -20px;
 }
 
 
@@ -88,6 +101,10 @@ h2#scoreNum {
   color: orange;
 }
 
+#yellow:hover {
+  color: yellow;
+}
+
 h1 {
   text-align: center;
   color: 	#FF4500;
@@ -96,8 +113,8 @@ h1 {
 }
 
 footer {
-  
-
+  text-align: right;
+  color: red;
 }
 
 
@@ -146,13 +163,4 @@ h1 {
 #1 {
   background-color: pink;
 
-}*/
-
-
-.selected {
-    color: green;
-}
-
-.highlight, .highlight_stay{
-    color:red;
 }*/
