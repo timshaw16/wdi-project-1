@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Tim Says | WID Project 1</title>
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.js"
-    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-    crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/app.js" charset="utf-8"></script>
-    <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
-  </head>
-  <body>
-    <h1>Tim Says</h1>
+<head>
+  <meta charset="utf-8">
+  <title>WID Project 1</title>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" charset="utf-8"></script>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+</head>
+<body>
+  <h1>Tim Says</h1>
 
-    <div class="gameBoard">
-        <ul>
-          <li id="1" class="square"></li>
-          <li id="2" class="square"></li>
-          <li id="3" class="square"></li>
-          <li id="4" class="square"></li>
-
-        </ul>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="gameBoard">
+        <div class="top-row">
+          <div id="blue" class="gamebutton"></div>
+        </div>
+        <div class="middle-row">
+          <div id="green" class="gamebutton"></div>
+          <div class="middle-row">
+            <div id="red" class="gamebutton"></div>
+          </div>
+        </div>
+        <div class="bottom-row">
+          <div id="purple" class="gamebutton"></div>
+          <div class="bottom-row">
+            <div id="orange" class="gamebutton"></div>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+  <div id="score">
+    <h2 id="scoreNum">0</h2></div>
 
+    <footer><p>&copy tjshaw.co.uk</p></footer>
   </body>
-</html>
+  </html>
