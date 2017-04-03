@@ -1,3 +1,45 @@
-body {
-  background-color: blue;
+li {
+  width: 95px;
+  height: 94px;
+  margin: 2px;
+  border-color:
+  float: left;
+  /*border-radius: 58px;*/
+  list-style: none;
 }
+
+.gameBoard {
+  width: 326px;
+  height: 287px;
+  margin: 0 auto;
+  margin-top: 180;
+}
+
+.square {
+  width: 115px;
+  height: 115px;
+  border: 1px solid black;
+  margin: 2px;
+  background-color: #E5E2DD;
+  float:left;
+  border-radius: 72px;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Rokkitt', serif;
+}
+
+#1 {
+  background-color: pink;
+
+}
+
+
+/*.selected {
+    color: green;
+}*/
+
+/*.highlight, .highlight_stay{
+    color:red;
+}*/
