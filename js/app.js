@@ -40,7 +40,7 @@ function playSequence(){
       const nextIndex = gameSequence[i];
       const $nextLi = $($lis[nextIndex]);
       const prevColor = $nextLi.css('background-color');
-      $nextLi.css('background-color', 'white');
+      $nextLi.css('background-color', '#dcdcf7');
 
       setTimeout(() => {
         $nextLi.css('background-color', prevColor);
@@ -64,7 +64,7 @@ function guess() {
   // Get the index of that li
   const chosenIndex = $lis.index($chosenLi);
   const prevColor   = $chosenLi.css('background-color');
-  $chosenLi.css('background-color', 'white');
+  $chosenLi.css('background-color', '#dcdcf7');
   setTimeout(() => {
     $chosenLi.css('background-color', prevColor);
   }, 500);
