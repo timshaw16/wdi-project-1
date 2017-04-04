@@ -1,7 +1,7 @@
 body {
-  background-color: #efefef;
+  background-color: #EDEDF4;
   font-family: 'Poiret One', cursive;
-  color: black;
+  color: #8093F1;
 }
 
 main {
@@ -19,20 +19,18 @@ footer {
 }
 
 li {
-  height: 150px;
+  height: 120px;
   width: 150px;
   display: inline-block;
 }
 
-h1 {
-  text-align: center;
-  font-size: 90px;
-  margin-top: 0;
-}
 
 #first {
   border: 2px solid violet;
   border-radius: 90px;
+  margin: 80px;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 #second {
@@ -58,6 +56,9 @@ h1 {
 #sixth {
   border: 2px solid #FF4500;
   border-radius: 90px;
+  margin: 80px;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 #start {
@@ -81,12 +82,22 @@ h1 {
   font-size: 25px;
 }
 
+#score {
+  margin-top: 0;
+  color: white;
+  background-color: #3772FF;
+  padding: 6px 20px;
+  border-radius: 40px;
+  display: inline-block;
+}
+
 h1 {
-  text-align: center;
-  color: 	#FF4500;
   font-size: 89px;
   margin-top: 10px;
-  margin-bottom: 18px;
+  margin-bottom: 5px;
+  display: inline-block;
+  margin-right: 20px;
+  margin-left: 550px;
 }
 
 
