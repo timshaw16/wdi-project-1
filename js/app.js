@@ -10,7 +10,7 @@
 // There will be a timer at the bottom right side.
 
 let $lis;
-let level = 6;
+let level = 2;
 let playing = false;
 let gameSequence;
 let userSequence;
@@ -28,7 +28,7 @@ function start(){
   userSequence = [];
 
   for (let i = 0; i <= level; i++) {
-    gameSequence.push(Math.floor(Math.random() * $lis.lengeth));
+    gameSequence.push(Math.floor(Math.random() * $lis.length));
   }
   console.log(gameSequence);
   playSequence();
@@ -48,7 +48,7 @@ function playSequence(){
           playing = true;
           console.log('You can play');
         }
-      }, 500);
+      }, 200);
     }, 1000*i);
   }
 }
@@ -74,11 +74,11 @@ function guess() {
 
   if(userSequence.length-1 === level){
     if (gameSequence.toString() === userSequence.toString()){
-      alert('You have won!');
+      alert('Well Done, you won!');
       level ++;
       playing = false;
     } else {
-      alert('You lost');
+      alert('Oops, you loose!');
       playing = false;
     }
   }
