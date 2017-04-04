@@ -1,10 +1,104 @@
 body {
   background-color: #efefef;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Poiret One', cursive;
   color: black;
 }
 
-.gameBoard {
+main {
+  margin: auto;
+}
+
+footer {
+  text-align: center;
+}
+
+#grid {
+  margin: 0 auto;
+  width: 320px;
+  padding-left: 0;
+}
+
+li {
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+}
+
+h1 {
+  text-align: center;
+  font-size: 90px;
+  margin-top: 0;
+}
+
+#first {
+  border: 2px solid violet;
+  border-radius: 90px;
+}
+
+#second {
+  border: 2px solid #40E0D0;
+  border-radius: 90px;
+}
+
+#third {
+  border: 2px solid #8A2BE2;
+  border-radius: 90px;
+}
+
+#fourth {
+  border: 2px solid #FFFF00;
+  border-radius: 90px;
+}
+
+#fifth {
+  border: 2px solid #00FF00;
+  border-radius: 90px;
+}
+
+#sixth {
+  border: 2px solid #FF4500;
+  border-radius: 90px;
+}
+
+#start {
+  border: 2px solid #191970;
+  border-radius: 40px;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  display: inline-block;
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+#reset {
+  border: 2px solid #191970;
+  border-radius: 40px;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  display: inline-block;
+  font-size: 25px;
+}
+
+h1 {
+  text-align: center;
+  color: 	#FF4500;
+  font-size: 89px;
+  margin-top: 10px;
+  margin-bottom: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+/*.gameBoard {
     max-width: 500px;
     height: 500px;
     margin: 19px auto;
@@ -52,18 +146,18 @@ h2#scoreNum {
 }
 
 #violet {
-    border: 2px solid #8A2BE2;
+    border: 2px solid violet;
     margin-left: 100px;
     margin-top: -20px;
 }
 
 #Turquoise {
-  border: 2px solid #40E0D0;
+  border: 2px solid turquoise;
   margin-top: -20px;
 }
 
 #pink {
-  border: 2px solid #FF33CC;
+  border: 2px solid pink;
   margin-left: 106px;
   margin-top: -20px;
 }
@@ -76,7 +170,7 @@ h2#scoreNum {
 
 #yellow {
   border: 2px solid yellow;
-  margin-left: 196px;
+  margin-left: 195px;
   margin-top: -20px;
 }
 
@@ -167,5 +261,3 @@ h1 {
 
 #1 {
   background-color: pink;
-
-}*/

@@ -1,5 +1,4 @@
 // Follow the Flashy Squares //
-
 // Player presses 'start'
 // 4 squares show up and one square flashes
 // The player will remember the square that flashes up and has to press that
@@ -10,256 +9,77 @@
 // and so on!!!!!!!!!!!!!!!!!!!!!!!!
 // There will be a timer at the bottom right side.
 
-$(document).ready(function(){
-  console.log('loaded');
+let $lis;
+let level = 6;
+let playing = false;
+let gameSequence;
+let userSequence;
 
-  // Below makes it a global game const
-  const game = {
-    count: 0,
-    possibilities: ['#8A2BE2', '#00FF00', '#40E0D0', '#orange', '#FF33CC', '#yellow'],
-    currentGame: [],
-    player: []
-};
-    // Making a new game
-    game.newGame = function () {
-      // clearing the game
-      game.clearGame();
-    };
+$(init);
 
-    game.clearGame = function clearGame() {
-      game.currentGame = [];
-      game.count = 0;
-      game.addCount();
-    };
+function init(){
+  $lis = $('li');
+  $('#start').on('click', start);
+  $('li').on('click', guess);
+}
 
-    // // If else statement * if you get the sequence wrong it will remove the class on the click and add the danger button to show player they got it wrong
-    // game.strict = fuction strict() {
-    //   if (game.strict === false) {
-    //     game.strict === true;
-    //     $('#strict').html('Is currently on').removeClass('btn-danger').addClass('btn-primary');
-    //   } else {
-    //     game.strict === false;
-    //     $('#strict').html('Is currently off').removeClass('btn-danger').addClass('btn-primary');
-    //   }
-    //   game.newGame();
-    // };
-    // Setting the intervals of the moves
-    game.showMoves = function showMoves() {
-      var i = 0;
-      var moves = setInterval(function(){
-        game.playGame(game.currentGame[i]);
-        i++;
-        if (i >=game.currentGame.length) {
-          clearInterval(moves);
+function start(){
+  gameSequence = [];
+  userSequence = [];
+
+  for (let i = 0; i <= level; i++) {
+    gameSequence.push(Math.floor(Math.random() * $lis.lengeth));
+  }
+  console.log(gameSequence);
+  playSequence();
+}
+
+function playSequence(){
+  for (let i = 0; i <= level; i++) {
+    setTimeout(() => {
+      const nextIndex = gameSequence[i];
+      const $nextLi = $($lis[nextIndex]);
+      const prevColor = $nextLi.css('background-color');
+      $nextLi.css('background-color', '#D3D3D3');
+
+      setTimeout(() => {
+        $nextLi.css('background-color', prevColor);
+        if (i === level){
+          playing = true;
+          console.log('You can play');
         }
-      }, 600);
+      }, 500);
+    }, 1000*i);
+  }
+}
 
-      game.clearPlayer();
-    };
+function guess() {
+  if (!playing) {
+    console.log('You cant play yet');
+    return;
+  }
 
-    // Turns the circles into the colour using the CSS method
-    game.shade = function shade(colName) {
-      console.log(colName);
-      switch(colName) {
-        case'#lime':
-        $(colName).css('background-color', '#00FF00');
-        break;
-        case'#violet':
-        $(colName).css('background-color', '#8A2BE2');
-        break;
-        case'#Turquoise':
-        $(colName).css('background-color', '#40E0D0');
-        break;
-        case'#pink':
-        $(colName).css('background-color', '#FF33CC');
-        break;
-        case'#orange':
-        $(colName).css('background-color', 'orange');
-        break;
-        case'#yellow':
-        $(colName).css('background-color', 'yellow');
-      }
+  // Get the element I clicked on
+  const $chosenLi = $(this);
+  // Get the index of that li
+  const chosenIndex = $lis.index($chosenLi);
+  const prevColor   = $chosenLi.css('background-color');
+  $chosenLi.css('background-color', '#D3D3D3');
+  setTimeout(() => {
+    $chosenLi.css('background-color', prevColor);
+  }, 500);
+
+  // Add it to the sequence
+  userSequence.push(chosenIndex);
+
+  if(userSequence.length-1 === level){
+    if (gameSequence.toString() === userSequence.toString()){
+      alert('You have won!');
+      level ++;
+      playing = false;
+    } else {
+      alert('You lost');
+      playing = false;
     }
-
-    // Plays the game
-    game.playGame  =function playGame(field) {
-      // hover the circles
-      $(field).addClass('hover');
-      // switch statement shade above
-      game.shade(field);
-      setTimeout(function() {
-        $(field).removeClass('hover');
-      }; 300);
-    };
-    // Clearing the current players array
-    game.clearPlayer = function clearPlayer() {
-      game.player = [];
-    };
-    // Putting what the player clicks on into the top player array
-    game.addToPlayer = function addToPlayer(id) {
-      var field = '#'+id;
-      console.log(field);
-      game.player.push(field);
-      hame.playerTurn(field);
-    };
-
-    // *if statement* counting if the player had got the move correct or not.
-    game.playerTurn = function playerTurn(x) {
-      if (game.player[game.player.length - 1] !==
-        game.currentGame[game.player.length - 1]) {
-          if (game.strict) {
-            alert('sorry not right');
-            game.newGame();
-          } else {
-            alert ('wrong');
-            game.showMoves();
-          }
-        } else {
-          game.shade(x);
-          var check = game.player.length === game.current.length;
-          if (check) {
-            if (game.count === 20){
-              alert ('Aced it');
-            } else {
-              alert('Good job, next level');
-              game.nextLevel();
-            }
-          }
-        }
-      };
-
-      // Adding the count above in order to go to the next level
-      game.nextLevel = function nextLevel() {
-        game.addCount();
-      }
-
-      // Generates the moves of the circles/colours
-      game.generateMove = function generateMove() {
-        game.currentGame.push(game.possibilities[Math.floor(Math.random()*5))]);
-        game.showMoves();
-      };
-
-      // counter in the middle counting how many moves player has taken
-      game.addCount = function addCount() {
-        game.count++;
-        $('#clickNumber').addClass('animated fadeOutDown');
-
-        // counter in the middle if player gets move wrong
-        SetTimout(function(){
-          $('#clickNumber').removeClass('fadeOutDown').html(game.count).addClass('fadeInDown');
-        }, 200);
-        game.generateMove();
-
-      };
-
-      game.newGame();
-
-
-
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // $(() => {
-    //   const $square = $('.square');
-    //
-    //   for (var i = 0; i < $square.length; i++) {
-    //     $square[i].addEventListener('click', changeColor);
-    //   }
-    //   function changeColor(event){
-    //     event.style.backgroundColor =    randomColor();
-    //   }
-    //
-    // });
-
-
-
-
-
-
-
-
-    // const player = 1;
-    // $('.square').on('click', function() {
-    //   console.log('.square');
-    // });
-    //
-    // $('.square').click(function(){
-    //   if ($(this).css('background-color') === '#333333') {
-    //     $(this).css('background-color', '#1796cf');
-    //   } else {
-    //     $(this).css('background-color', '#333333');
-    //   }
-    //
-    // });
-
-    // const $square = $('#1').click(function() {
-    //   $square.removeClass('selected');
-    //   $(this).addClass('selected');
-    // });
-
-    // $(function(){
-    //   $('.square').hover(function(){
-    //     $(this).addClass('highlight');
-    //   }, function(){
-    //     $(this).removeClass('highlight');
-    //   });
-    //
-    //   $('.square').click(function(){
-    //     $(this).addClass('highlight_stay');
-    //   });
-
-    // $('.Square').click(function(event) {
-    //   switch($(event.target).attr('id')) {
-    //     case $.square:
-    //       $(event.target).css('background-color', 'red');
-    //       break;
-    //
-    //   }
-    // });
+  }
+}
