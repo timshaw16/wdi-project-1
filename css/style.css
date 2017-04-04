@@ -8,12 +8,11 @@ main {
   margin: auto;
 }
 
-footer {
+/*footer {
   text-align: center;
+}*/
 
-}
-
-/*#scoreBoard {
+#scoreBoard {
   border: 2px solid #70E4EF;
   width: 275px;
   height: 180px;
@@ -22,15 +21,22 @@ footer {
   text-align: center;
   font-size: 32px;
   border-radius: 30px;
-}*/
+  float: left;
+}
 
 #grid {
   margin: 0 auto;
   width: 320px;
   padding-left: 0;
   margin-top: 30px;
+  float: right;
 }
 
+.container {
+  width: 650px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
 
 li {
   height: 120px;
@@ -79,22 +85,28 @@ li {
   border-radius: 40px;
   width: 100px;
   height: 50px;
-  line-height: 50px;
+  height: 39px;
+  line-height: 40px;
   display: inline-block;
   font-size: 25px;
   margin-top: 20px;
+  margin-left: 10px;
   text-align: center;
+  position: absolute;
 }
 
 #reset {
   border: 2px solid #191970;
   border-radius: 40px;
   width: 100px;
-  height: 50px;
-  line-height: 50px;
+  height: 42px;
+  line-height: 42px;
   display: inline-block;
-  font-size: 25px;
+  font-size: 22px;
   text-align: center;
+  position: absolute;
+  margin-top: 66px;
+  margin-left: 10px;
 }
 
 #level {
@@ -117,7 +129,7 @@ h1 {
   font-size: 89px;
   margin-top: 10px;
   margin-bottom: 5px;
-  margin-left: 450px;
+  margin-left: 600px;
   display: inline-block;
   /*margin-right: 20px;
   margin-left: 550px;*/
