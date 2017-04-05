@@ -15,6 +15,7 @@ let level = 2;
 let playing = false;
 let gameSequence;
 let userSequence;
+let score = 1;
 
 $(init);
 
@@ -82,6 +83,9 @@ function guess() {
       alert('Well Done, you won!');
       level ++;
       playing = false;
+// counting levels
+      score ++;
+      $('.level').text(`level: ${score}`);
     } else {
       alert('Oops, you loose!');
       playing = false;
