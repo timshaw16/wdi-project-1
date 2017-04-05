@@ -17,6 +17,7 @@ let gameSequence;
 let userSequence;
 let score = 1;
 
+
 $(init);
 
 // Allows the player to click on the 'start' button and on the 'circles'
@@ -39,14 +40,15 @@ function start(){
   playSequence();
 }
 
+// Computer playing the sequence
 function playSequence(){
   for (let i = 0; i <= level; i++) {
     setTimeout(() => {
       const nextIndex = gameSequence[i];
       const $nextLi = $($lis[nextIndex]);
       const prevColor = $nextLi.css('background-color');
-      $nextLi.css('background-color', '#dcdcf7');
-
+      $nextLi.css('background-color', 'white');
+// The amount of time between circle flashes
       setTimeout(() => {
         $nextLi.css('background-color', prevColor);
         if (i === level){
@@ -69,7 +71,7 @@ function guess() {
   // Get the index of that li
   const chosenIndex = $lis.index($chosenLi);
   const prevColor   = $chosenLi.css('background-color');
-  $chosenLi.css('background-color', '#dcdcf7');
+  $chosenLi.css('background-color', 'white');
   setTimeout(() => {
     $chosenLi.css('background-color', prevColor);
   }, 500);
@@ -90,5 +92,11 @@ function guess() {
       alert('Oops, you loose!');
       playing = false;
     }
+  }
+
+  $('#reset').on('click');
+  function reset() {
+    gameSequence = [];
+    userSequence = [];
   }
 }
