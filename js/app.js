@@ -9,6 +9,7 @@
 // and so on!!!!!!!!!!!!!!!!!!!!!!!!
 // There will be a timer at the bottom right side.
 
+// makes it a global game const
 let $lis;
 let level = 2;
 let playing = false;
@@ -17,16 +18,19 @@ let userSequence;
 
 $(init);
 
+// Allows the player to click on the 'start' button and on the 'circles'
 function init(){
   $lis = $('li');
   $('#start').on('click', start);
   $('li').on('click', guess);
 }
 
+// empty arrays which are then filled with what the computer and user picks
 function start(){
   gameSequence = [];
   userSequence = [];
 
+// Picks what circles flash randomly
   for (let i = 0; i <= level; i++) {
     gameSequence.push(Math.floor(Math.random() * $lis.length));
   }
@@ -69,9 +73,10 @@ function guess() {
     $chosenLi.css('background-color', prevColor);
   }, 500);
 
-  // Add it to the sequence
+  // Pushes what the player clicks on to the above 'userSequence'
   userSequence.push(chosenIndex);
 
+// Works out if the player gets the sequence correct or not
   if(userSequence.length-1 === level){
     if (gameSequence.toString() === userSequence.toString()){
       alert('Well Done, you won!');
