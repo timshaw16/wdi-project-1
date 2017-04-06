@@ -1,3 +1,11 @@
+// Player enters the site and is presented with 6 circles, start & reset button
+// Player clicks on start
+// Computer will then randomly flash 3 circles
+// The player will then follow the flashes
+// Each level will add an extra flash
+// Once a player finshes the level the score level will automatically increase
+
+
 // Global vars
 let $lis;
 let $main;
@@ -6,7 +14,6 @@ let $reset;
 let $level;
 let $levelNumber;
 let $message;
-
 let level;
 let playing;
 let gameSequence;
@@ -15,10 +22,8 @@ let score;
 
 $(init);
 
-// Allows the player to click on the 'start' to start the game and initiate all functions within init.
 function init(){
   reset();
-
   $lis         = $('li');
   $main        = $('main');
   $start       = $('#start');
@@ -32,7 +37,7 @@ function init(){
   $reset.on('click', reset);
 }
 
-// empty arrays which are then filled with what the computer and user picks
+// Page starts off with the 'start' button. When clicked, 'Get Ready' comes across the screen
 function start(){
   $message.html('Get ready...').addClass('show bounceInLeft');
 
@@ -44,39 +49,40 @@ function start(){
   gameSequence = [];
   userSequence = [];
 
-  // Picks what circles flash randomly
+  // Generates the random flashes in the circles
   for (let i = 0; i <= level; i++) {
     gameSequence.push(Math.floor(Math.random() * $lis.length));
   }
 
-  // console.log(gameSequence);
+// Part of the 'Get Ready' message
   setTimeout(() => {
     $message.removeClass('bounceInLeft').addClass('bounceOutRight');
     setTimeout(() => {
       $message.removeClass('show bounceOutRight');
       setTimeout(playSequence, 1000);
-    }, 2000);
+    }, 900);
   }, 2000);
 }
-
+// Reset's the game
 function reset(){
   level = 2;
   playing = false;
   score = 1;
 }
 
-// Computer playing the sequence
+// Computer playing the flash sequence
 function playSequence(){
   for (let i = 0; i <= level; i++) {
     setTimeout(() => {
       const nextIndex = gameSequence[i];
       const $nextLi = $($lis[nextIndex]);
       const prevColor = $nextLi.css('background-color');
-      // Fills the hollow circles when clicked on
+      // Fills the hollow circles when sequence is being played by computer
       var fillColour = $nextLi.css('border-color');
       $nextLi.css('background-color', fillColour);
       // The amount of time between circle flashes
       setTimeout(() => {
+      // Returns the circles back to get border-style
         $nextLi.css('background-color', prevColor);
         if (i === level){
           playing = true;
@@ -92,26 +98,23 @@ function guess() {
     console.log('You cant play yet');
     return;
   }
-  // Get the element I clicked on
+// Pushes what the player clicks into the above 'userSequence'
   const $chosenLi = $(this);
-  // Get the index of that li
   const chosenIndex = $lis.index($chosenLi);
   const prevColor   = $chosenLi.css('background-color');
-  // $chosenLi.css('background-color', 'white');
   var fillColourtwo = $chosenLi.css('border-color');
   $chosenLi.css('background-color', fillColourtwo);
   setTimeout(() => {
     $chosenLi.css('background-color', prevColor);
   }, 200);
 
-  // Pushes what the player clicks on to the above 'userSequence'
   userSequence.push(chosenIndex);
 
   // Works out if the player gets the sequence correct or not
   if(userSequence.length-1 === level){
     if (gameSequence.toString() === userSequence.toString()){
       level++;
-      $message.html(`Well done... Level ${level-1}!`).addClass('show');
+      $message.html(`Well done! Onto Level ${level-1}!`).addClass('show');
       playing = false;
       score++;
       $levelNumber.text(score);
@@ -119,7 +122,7 @@ function guess() {
     } else {
       playing = false;
       $message.html('Wrong! Start again!').addClass('show');
-      setTimeout(reset, 3000);
+      setTimeout(reset, 1000);
     }
   }
 }
