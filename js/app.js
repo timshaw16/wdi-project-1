@@ -1,23 +1,46 @@
 // Global vars
 let $lis;
-let level = 2;
-let playing = false;
+let $main;
+let $start;
+let $reset;
+let $level;
+let $levelNumber;
+let $message;
+
+let level;
+let playing;
 let gameSequence;
 let userSequence;
-let score = 1;
+let score;
 
 $(init);
 
 // Allows the player to click on the 'start' to start the game and initiate all functions within init.
 function init(){
-  $lis = $('li');
-  $('#start').on('click', start);
-  $('li').on('click', guess);
-  // $('#reset').on('click', clearContents);
+  reset();
+
+  $lis         = $('li');
+  $main        = $('main');
+  $start       = $('#start');
+  $reset       = $('#reset');
+  $level       = $('#level');
+  $levelNumber = $('#level span');
+  $message     = $('.message');
+
+  $start.on('click', start);
+  $lis.on('click', guess);
+  $reset.on('click', reset);
 }
 
 // empty arrays which are then filled with what the computer and user picks
 function start(){
+  $message.html('Get ready...').addClass('show bounceInLeft');
+
+  $start.hide();
+  $main.fadeIn();
+  $reset.fadeIn().css('display','inline-block');
+  $level.fadeIn().css('display','inline-block');
+
   gameSequence = [];
   userSequence = [];
 
@@ -25,8 +48,21 @@ function start(){
   for (let i = 0; i <= level; i++) {
     gameSequence.push(Math.floor(Math.random() * $lis.length));
   }
-  console.log(gameSequence);
-  playSequence();
+
+  // console.log(gameSequence);
+  setTimeout(() => {
+    $message.removeClass('bounceInLeft').addClass('bounceOutRight');
+    setTimeout(() => {
+      $message.removeClass('show bounceOutRight');
+      setTimeout(playSequence, 1000);
+    }, 2000);
+  }, 2000);
+}
+
+function reset(){
+  level = 2;
+  playing = false;
+  score = 1;
 }
 
 // Computer playing the sequence
@@ -74,27 +110,16 @@ function guess() {
   // Works out if the player gets the sequence correct or not
   if(userSequence.length-1 === level){
     if (gameSequence.toString() === userSequence.toString()){
-      // $('div').animate({left: '250px'});
-      $("#welldone").show()
-
-      // $("#welldone").show(function(){
-      //   $("h2").show();
-      //   level ++;
-      //   playing = false;
-      //   // counting levels
-      //   score ++;
-      //   $('.level').text(`level: ${score}`);
-      // }else{
-      //   playing = false;
-      //   $("#welldone").show(function(){
-      //     $("h2").hide();
-      //   }
-      // }
-
-      // function clearContents () {
-      //   gameSequence = null;
-      //   userSequence = null;
-      // }
+      level++;
+      $message.html(`Well done... Level ${level-1}!`).addClass('show');
+      playing = false;
+      score++;
+      $levelNumber.text(score);
+      setTimeout(start, 3000);
+    } else {
+      playing = false;
+      $message.html('Wrong! Start again!').addClass('show');
+      setTimeout(reset, 3000);
     }
   }
 }

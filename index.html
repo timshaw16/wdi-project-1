@@ -7,35 +7,30 @@
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/app.js" charset="utf-8"></script>
   <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
 </head>
 <body>
-  <main>
-
+  <div class="message animated"></div>
+  <header>
     <h1>Follow The Flash!</h1>
-
-    <div id ="start">Start</div>
-    <div id ="reset">Reset</div>
-
+    <div id="start">Start</div>
+    <div id="level">Level: <span>1</span></div>
+    <div id="reset">Reset</div>
+  </header>
+  <main>
     <div class="container">
-      <div id="scoreBoard">Score Board
-        <p class="level">level: 1</p>
-      </div>
-
       <ul id="grid">
-        <li id="first" class="spot"></li>
-        <li id="second" class="spot"></li>
-        <li id="third" class="spot"></li>
-        <li id="fourth" class="spot"></li>
-        <li id="fifth" class="spot"></li>
-        <li id="sixth" class="spot"></li>
+        <li id="first"></li>
+        <li id="second"></li>
+        <li id="third"></li>
+        <li id="fourth"></li>
+        <li id="fifth"></li>
+        <li id="sixth"></li>
       </ul>
-    </div>
-
-    <div id="welldone">
-      <h2>Well done</h2>
     </div>
   </main>
   <footer>
@@ -43,32 +38,3 @@
   </footer>
 </body>
 </html>
-
-
-
-<!-- !-- <div class="row">
-<div class="col-md-12">
-<div class="gameBoard">
-<div class="top-row">
-<div id="lime" class="gamebutton"></div>
-</div>
-<div class="middle-row">
-<div id="violet" class="gamebutton"></div>
-<div class="middle-row">
-<div id="Turquoise" class="gamebutton"></div>
-</div>
-</div>
-<div class="bottom-row">
-<div id="pink" class="gamebutton"></div>
-<div class="bottom-row">
-<div id="orange" class="gamebutton"></div>
-</div>
-</div>
-<div class="bottom-bottom">
-<div id="yellow" class="gamebutton"></div>
-</div>
-</div>
-</div>
-</div>
-<div id="score">
-<h2 id="scoreNum">0</h2><h3>taps</h3></div> -->
