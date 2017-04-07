@@ -23,7 +23,10 @@ let score;
 $(init);
 
 function init(){
-  reset();
+  // reset();
+  level = 2;
+  playing = false;
+  score = 1;
   $lis         = $('li');
   $main        = $('main');
   $start       = $('#start');
@@ -68,6 +71,7 @@ function reset(){
   level = 2;
   playing = false;
   score = 1;
+  setTimeout(start, 1000);
 }
 
 // Computer playing the flash sequence
@@ -98,7 +102,7 @@ function guess() {
     console.log('You cant play yet');
     return;
   }
-// Pushes what the player clicks into the above 'userSequence'
+  // Moves what circle player clicks on into the userSequence array above
   const $chosenLi = $(this);
   const chosenIndex = $lis.index($chosenLi);
   const prevColor   = $chosenLi.css('background-color');
@@ -110,19 +114,43 @@ function guess() {
 
   userSequence.push(chosenIndex);
 
+
   // Works out if the player gets the sequence correct or not
   if(userSequence.length-1 === level){
     if (gameSequence.toString() === userSequence.toString()){
       level++;
-      $message.html(`Well done! Onto Level ${level-1}!`).addClass('show');
+      $message.html(`Well done! Onto Level ${level-1}!`).addClass('show slideInUp');
+
+      $start.hide();
+      $main.fadeIn();
+      $reset.fadeIn().css('display','inline-block');
+      $level.fadeIn().css('display','inline-block');
+
+      setTimeout(() => {
+        $message.removeClass('slideInUp').addClass('slideOutUp');
+        setTimeout(() => {
+          $message.removeClass('show slideOutUp');
+          // setTimeout(playSequence, 1000);
+        }, 900);
+      }, 2000);
+
       playing = false;
       score++;
       $levelNumber.text(score);
       setTimeout(start, 3000);
     } else {
       playing = false;
+      score = 1;
       $message.html('Wrong! Start again!').addClass('show');
-      setTimeout(reset, 1000);
+      $levelNumber.text(score);
+      setTimeout(() => {
+        $message.removeClass('show').addClass('slideOutUp');
+        setTimeout(() => {
+          $message.removeClass('slideOutUp');
+          // setTimeout(playSequence, 1000);
+        }, 900);
+      }, 2000);
+      setTimeout(reset, 2000);
     }
   }
 }
